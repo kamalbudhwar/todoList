@@ -36,7 +36,6 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.get("/", function(req, res) {
-  console.log('get /');
   Item.find({}, function(err, foundItem) {
     //console.log(foundItem);
   if(!err){
@@ -58,7 +57,6 @@ app.get("/", function(req, res) {
   });
 });
 app.get('/:customListName', function(req, res) {
-  console.log('get /:customListName');
   const customListName = _.capitalize(req.params.customListName);
   List.findOne({
     name: customListName
